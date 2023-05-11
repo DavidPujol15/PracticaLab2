@@ -1,0 +1,53 @@
+
+* {
+	box-sizing: border-box;
+}
+
+body {
+	background-color: #0e0e0e;;
+	font-family: helvetica;
+}
+
+.canvatable {
+    width: 800px;
+    height: 400px;  
+    position: absolute;
+    margin-left: -400px;
+    left: 50%;
+    top: 100px; 
+    border: 10px solid #5f5f5f;
+    border-radius: 25px;
+    background-color: #101;
+    box-shadow: inset 0 2px 5px 0 rgba(50, 50, 50, 0.25);
+}
+.title {
+    text-align: center;
+    font-size: 2rem;
+    font-family: "Roboto Condensed", Arial, sans-serif;
+    text-transform: uppercase;
+    color: white;
+    text-shadow: 1px 1px 1px #aaa;
+}
+
+.score {
+    color: white;
+    font-size: 4rem;
+    position: fixed;
+    top: 0;
+    font-family: "Roboto Condensed", Arial, sans-serif;
+    text-shadow: 1px 1px 1px #aaa;
+    font-weight: bold;
+    left: 0;
+    padding: 10px 30px;
+    z-index: -1;
+   
+}
+#score-jugador1 {    
+    left: 0;   
+}
+#score-jugador2 {  
+    right: 0;
+    left: inherit;   
+}
+
+
