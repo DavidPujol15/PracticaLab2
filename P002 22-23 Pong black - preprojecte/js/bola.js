@@ -17,6 +17,24 @@ class Bola extends Rectangle {
      * Si xoca o no amb els marges del canvas
      * Si xoca o no amb les pales dels jugadors 
     **********************************/  
+        this.mou(velocitatx,velocitaty);
+
+        if(this.puntPosicio.x-this.amplada<=0 ||this.puntPosicio.x + this.amplada >= ampleCanva){
+            this.velocitatx *= -1; // Invertir la velocidad en el eix X
+        }
+        if (this.puntPosicio.y - this.alçada<= 0 || this.puntPosicio.y + this.alcada >= altCanva) {
+            this.velocitaty *= -1; // Invertir la velocidad en el eix Y
+        }
+        // Comprobar si la bola choca con la paleta del jugador
+        if (this.colisioRectangle(palaJugador)) {
+            this.velocitatx *= -1; // Invertir la velocidad en el eix x
+        }
+
+        // Comprobar si la bola choca con la paleta del ordenador
+        if (this.colisioRectangle(palaOrdinador)) {
+            this.velocitatx *= -1; // Invertir la velocidad en el eix x
+        }
+
     /********************************* 
      * Identifica el punt actual
      * Defineix el punt següent. On ha d'anar la bola
