@@ -81,7 +81,7 @@ class Bola extends Rectangle {
     }
 
 
-        //Exemple de com identificar un xoc al marge superi
+        //Exemple de com identificar un xoc al marge superior
         //Com a paràmetre accepta un SEGMENT que heu de crear anteriorment
         //Fer un mètode per cada lateral que manca: esquerra, dret i inferior
         //El el cas dels laterals caldrà assignar puntuació i reiniciar un nou joc
