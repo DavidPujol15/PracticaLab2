@@ -50,7 +50,7 @@ class Segment{
 
         //2n REVISAR SI EXISTEIX UN PUNT D'INTERSECCIÓ EN UN DELS 4 SEGMENTS
         //SI EXISTEIX, QUIN ÉS AQUEST PUNT
-        //si hi ha més d'n, el més ajustat
+        //si hi ha més d'un, el més ajustat
         let puntI;
         let distanciaI;
         let puntIMin;
@@ -75,11 +75,38 @@ class Segment{
          * d'intersecció per a cada vora
         **********************************/
         //vora inferior
-        
+        puntI = this.puntInterseccio(segmentVoraInferior);
+        if (puntI){
+            //distancia entre dos punts, el punt inicial del segment i el punt d'intersecció
+            distanciaI = Punt.distanciaDosPunts(this.puntA,puntI);
+            if (distanciaI < distanciaIMin){
+                distanciaIMin = distanciaI;
+                puntIMin = puntI;
+                voraI = "inferior";
+            }
+        }
         //vora esquerra
-        
+        puntI = this.puntInterseccio(segmentVoraEsquerra);
+        if (puntI){
+            //distancia entre dos punts, el punt inicial del segment i el punt d'intersecció
+            distanciaI = Punt.distanciaDosPunts(this.puntA,puntI);
+            if (distanciaI < distanciaIMin){
+                distanciaIMin = distanciaI;
+                puntIMin = puntI;
+                voraI = "esquerra";
+            }
+        }
         //vora dreta
-       
+        puntI = this.puntInterseccio(segmentVoraDreta);
+        if (puntI){
+            //distancia entre dos punts, el punt inicial del segment i el punt d'intersecció
+            distanciaI = Punt.distanciaDosPunts(this.puntA,puntI);
+            if (distanciaI < distanciaIMin){
+                distanciaIMin = distanciaI;
+                puntIMin = puntI;
+                voraI = "dreta";
+            }
+        }
 
         if(voraI){
             //Objecte que retorna e punt d'intersecció i en quina vora 
