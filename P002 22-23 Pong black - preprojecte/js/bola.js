@@ -85,7 +85,16 @@ class Bola extends Rectangle {
         //Com a paràmetre accepta un SEGMENT que heu de crear anteriorment
         //Fer un mètode per cada lateral que manca: esquerra, dret i inferior
         //El el cas dels laterals caldrà assignar puntuació i reiniciar un nou joc
-   
+        
+        revisaXocTop(segmentTrajectoria){
+            if(segmentTrajectoria.puntB.y <0){
+                let exces = (segmentTrajectoria.puntB.y)/this.velocitaty;
+                this.puntPosicio.x = segmentTrajectoria.puntB.x - exces*this.velocitatx;
+                this.puntPosicio.y = 0;
+                this.velocitaty = -this.velocitaty;
+                return true;
+            }
+        }
        
         
       
