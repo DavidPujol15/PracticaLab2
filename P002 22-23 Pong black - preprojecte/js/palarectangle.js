@@ -16,14 +16,15 @@ class PalaRectangle extends Rectangle{
          * Tasca. Definir el moviment de la pala
          * en funció de la telca premuda
         **********************************/
-            this.mou(0,alcada);
+            this.puntPosicio.y = Math.min(joc.alcada - alcada, 
+                this.puntPosicio.y + this.velocitatY)
         }
         if(key.UP.pressed){
        /********************************* 
          * Tasca. Definir el moviment de la pala
          * en funció de la telca premuda
         **********************************/
-            this.mou(0,-alcada);
+            this.puntPosicio.y = Math.max(0,this.puntPosicio.y - this.velocitatY)
         }
     }
     updateAuto(alcada){
