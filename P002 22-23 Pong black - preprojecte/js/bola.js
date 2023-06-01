@@ -1,6 +1,6 @@
 class Bola extends Rectangle {
     constructor(puntPosicio, amplada, alcada) {
-        super(puntPosicio, amplada, alcada);       
+        super(puntPosicio, amplada,alcada);       
         this.velocitatx = 2;
         this.velocitaty = 2;
         this.colorCercle = "#eee";
@@ -17,23 +17,7 @@ class Bola extends Rectangle {
      * Si xoca o no amb els marges del canvas
      * Si xoca o no amb les pales dels jugadors 
     **********************************/  
-        this.mou(velocitatx,velocitaty);
-
-        if(this.puntPosicio.x-this.amplada<=0 ||this.puntPosicio.x + this.amplada >= ampleCanva){
-            this.velocitatx *= -1; // Invertir la velocidad en el eix X
-        }
-        if (this.puntPosicio.y - this.alçada<= 0 || this.puntPosicio.y + this.alcada >= altCanva) {
-            this.velocitaty *= -1; // Invertir la velocidad en el eix Y
-        }
-        // Comprobar si la bola choca con la paleta del jugador
-        if (this.colisioRectangle(palaJugador)) {
-            this.velocitatx *= -1; // Invertir la velocidad en el eix x
-        }
-
-        // Comprobar si la bola choca con la paleta del ordenador
-        if (this.colisioRectangle(palaOrdinador)) {
-            this.velocitatx *= -1; // Invertir la velocidad en el eix x
-        }
+       
 
     /********************************* 
      * Identifica el punt actual
@@ -48,12 +32,18 @@ class Bola extends Rectangle {
      * canviar el sentit en funció d'on ha xocat i sortir
     **********************************/  
         let xoc = false; 
-        let segmentTrajectoria;
+
+        let puntActual=this.puntPosicio;
+        let puntSeguent = new Punt(this.puntPosicio.x + this.velocitatx,
+                                this.puntPosicio.y+this.velocitaty);
+
+        let segmentTrajectoria=new Segment(puntActual, puntSeguent);
+
      /********************************* 
      * Tasca. Revisar si xoca amb tots els marges del canva 
     **********************************/ 
         xoc = revisaXocTop(segmentTrajectoria);
-        if(!xoc){
+        if(xoc){
               /********************************* 
              * Tasca. Revisar si xoca amb alguna pala i 
              * en quina vora de la pala xoca 
@@ -88,11 +78,38 @@ class Bola extends Rectangle {
         //El el cas dels laterals caldrà assignar puntuació i reiniciar un nou joc
         
         revisaXocTop(segmentTrajectoria){
-            if(segmentTrajectoria.puntB.y <0){
+            if(segmentTrajectoria.puntB.y <= 0){
                 let exces = (segmentTrajectoria.puntB.y)/this.velocitaty;
                 this.puntPosicio.x = segmentTrajectoria.puntB.x - exces*this.velocitatx;
                 this.puntPosicio.y = 0;
                 this.velocitaty = -this.velocitaty;
+                return true;
+            }
+        }
+
+        revisaXocBot(segmentTrajectoria){
+            if(segmentTrajectoria.puntB.y + this.alcada >= altCanva){
+                let exces = ((segmentTrajectoria.PuntB.y + this.alcada - altCanva)/this.velocitaty);
+                this.puntPosicio.x = segmentTrajectoria.puntB.x - exces*this.velocitatx;
+                this.puntPosicio.y = altCanva;
+                this.velocitaty*=-1;
+                return true;
+            }
+        }
+
+        revisaXocLeft(segmentTrajectoria){
+            if(segmentTrajectoria.puntB.x + this.amplada <= 0){
+                let exces = ((segmentTrajectoria.PuntB.x + this.amplada)/this.velocitatx);
+                this.puntPosicio.x = 0;
+                this.puntPosicio.y = segmentTrajectoria.puntB.y - exces*this.velocitaty;
+                return true;
+            }
+        }
+        revisaXocRight(segmentTrajectoria){
+            if(segmentTrajectoria.puntB.x + this.amplada >= ampladaCanva){
+                let exces = ((segmentTrajectoria.PuntB.x + this.amplada - ampladaCanva)/this.velocitatx);
+                this.puntPosicio.x = ampladaCanva;
+                this.puntPosicio.y = segmentTrajectoria.puntB.y - exces*this.velocitaty;
                 return true;
             }
         }
@@ -116,8 +133,6 @@ class Bola extends Rectangle {
         let PuntVora 
         
         return PuntVora;
-       
-
     }
 
    

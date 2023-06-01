@@ -16,7 +16,7 @@ class PalaRectangle extends Rectangle{
          * Tasca. Definir el moviment de la pala
          * en funció de la telca premuda
         **********************************/
-            this.puntPosicio.y = Math.min(joc.alcada - alcada, 
+            this.puntPosicio.y = Math.min(alcada - this.alcada, 
                 this.puntPosicio.y + this.velocitatY)
         }
         if(key.UP.pressed){
@@ -33,12 +33,9 @@ class PalaRectangle extends Rectangle{
          * automàtica en moviment constant 
          * o amb variacions aleatories
         **********************************/
-        const direction = Math.random() < 0.5 ? 1 : -1; // Determinar la direcció aleatoriament
-
-        // Calcular el desplaçament aleatori en el eix Y
-        const movement = Math.floor(Math.random() * alcada) * direction;
-
-        this.mou(0, movement);
+       
+        this.puntPosicio.y = Math.min(alcada-this.alcada, this.puntPosicio.y + this.velocitatY);
+        
 
     }
 
