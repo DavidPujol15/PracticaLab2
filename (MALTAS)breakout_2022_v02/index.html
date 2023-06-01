@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>BreackOut 2021</title>
+        <link rel="stylesheet" href="css\estils.css">
+     
+    </head>
+<html>
+<body>
+    <div id="seleccio">
+        <label for="nivell" margin-top: 20px;>
+            <strong>Select a level</strong></label>
+        <button onclick="show(this)" id="Nivell1">Level 1
+        <button onclick="show(this)" id="Nivell2">Level 2
+        <button onclick="show(this)" id="Nivell3">Level 3
+    </div>
+    <div id="principal"style="display:none;">
+        <canvas id="joc" width="740" height="400"></canvas>
+    </div>
+    <div id="puntuacio" style="display:none;">
+        <h1><strong>Puntuació</strong></h1>
+        <div id="numPunts"></div>
+    </div>
+    <div id="vides" style="display:none;">
+        <h1><strong>Vides</strong></h1>
+        <div id="numVides"></div>
+    </div>
+    <div id="lose" style="display:none;">
+        <h1><strong>HAS PERDUT!</strong></h1>
+    </div>
+    <div id="win" style="display:none;">
+        <h1><strong>HAS GUANYAT!</strong></h1>
+    </div>
+</body>
+
+<script src="js/jquery-3.6.0.min.js"></script>
+<script src="js/jquery-ui.min.js"></script>
+<script src="js/display.js"></script>
+<script src="js/mur.js  "></script>
+<script src="js/joc.js"></script>
+<script src="js/totxo.js"></script>
+<script src="js/bola.js"></script>
+<script src="js/punt.js"></script>
+<script src="js/pala.js"></script>
+<script src="js/segment.js"></script>
+<script src="js/app.js"></script>
+
+</html>

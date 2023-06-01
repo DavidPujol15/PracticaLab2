@@ -73,6 +73,7 @@ class Bola extends Rectangle {
                     }
                 }  
         }
+        
         if(!xoc){
             //Si no hi ha xoc és mou on pertoca
             this.puntPosicio.x = segmentTrajectoria.puntB.x;

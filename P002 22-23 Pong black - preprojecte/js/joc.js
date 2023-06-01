@@ -10,7 +10,7 @@ class Joc{
          * Tasca. Crear els elements del joc
          * Pales, bola, etc
         **********************************/
-       
+        this.palaJugador=new palarectangle(new Punt(amplada/2),alcada/2 , );
 
         //Tecles de control
          //tecles del Joc. Només fem servir up i down
