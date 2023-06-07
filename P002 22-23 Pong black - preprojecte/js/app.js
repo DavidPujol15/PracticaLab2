@@ -10,9 +10,13 @@ $(function(){
      * Tasca. Inicialitza la classe JOC les posicions 
      * dels elements del joc
      * al canva: Pales, bola, etc
-    **********************************/  
-    animacio();
+    **********************************/
 
+    joc = new Joc(myCanvas,myCtx);
+    let pantalla = new display(myCtx);
+    joc.velocitat(1);
+    joc.inicialitza();
+    animacio();
 })
 
 function animacio(){

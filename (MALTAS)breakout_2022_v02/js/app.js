@@ -22,7 +22,7 @@ function show(nivell){
     let myCanvas = document.getElementById("joc");
     let ctx = myCanvas.getContext("2d");
     joc = new Joc(myCanvas,ctx,n);
-    pantalla = new display (ctx);
+    let pantalla = new display(ctx);
     joc.velocitat=1;
     joc.inicialitza();
 } 

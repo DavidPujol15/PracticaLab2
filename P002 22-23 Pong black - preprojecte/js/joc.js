@@ -15,7 +15,7 @@ class Joc{
         this.bola = new bola(new Punt(this.amplada/2,this.alcada/2),10,10);
 
         //Tecles de control
-         //tecles del Joc. Només fem servir up i down
+        //tecles del Joc. Només fem servir up i down
         this.key = {
             RIGHT: {code: 39, pressed: false},
             LEFT: {code: 37, pressed: false},
@@ -51,7 +51,10 @@ class Joc{
          * Tasca. Dibuixar inicialment els elements del joc
          * al canva: Pales, bola, etc
         **********************************/
-       //Màtode de crida recursiva per generar l'animació dels objectes
+          this.draw();
+
+
+        //Màtode de crida recursiva per generar l'animació dels objectes
         requestAnimationFrame(animacio);
 
     }

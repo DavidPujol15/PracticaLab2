@@ -17,7 +17,7 @@ class Bola extends Rectangle {
      * Si xoca o no amb els marges del canvas
      * Si xoca o no amb les pales dels jugadors 
     **********************************/  
-       
+
 
     /********************************* 
      * Identifica el punt actual
@@ -35,14 +35,15 @@ class Bola extends Rectangle {
 
         let puntActual=this.puntPosicio;
         let puntSeguent = new Punt(this.puntPosicio.x + this.velocitatx,
-                                this.puntPosicio.y+this.velocitaty);
+            this.puntPosicio.y+this.velocitaty);
 
         let segmentTrajectoria=new Segment(puntActual, puntSeguent);
 
      /********************************* 
      * Tasca. Revisar si xoca amb tots els marges del canva 
     **********************************/ 
-        xoc = revisaXocTop(segmentTrajectoria);
+        xoc = this.revisaXocTop(segmentTrajectoria)||this.revisaXocBot(segmentTrajectoria)
+                    || this.revisaXocLeft(segmentTrajectoria)|| this.revisaXocRight()||this.revisaXocPales();
         if(xoc){
               /********************************* 
              * Tasca. Revisar si xoca amb alguna pala i 
@@ -131,7 +132,7 @@ class Bola extends Rectangle {
 
     revisaXocPales(segmentTrajectoria,palaJugador, palaOrdinador){
         let PuntVora 
-        
+
         return PuntVora;
     }
 
