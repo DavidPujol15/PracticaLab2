@@ -10,7 +10,9 @@ class Joc{
          * Tasca. Crear els elements del joc
          * Pales, bola, etc
         **********************************/
-        this.palaJugador=new palarectangle(new Punt(amplada/2),alcada/2 , );
+        this.palaJugador=new palarectangle(new Punt(100,this.alcada/3),20,100);
+        this.palaJoc = new palarectangle(new Punt(this.amplada-100,this.alcada/3),20,100);
+        this.bola = new bola(new Punt(this.amplada/2,this.alcada/2),10,10);
 
         //Tecles de control
          //tecles del Joc. Només fem servir up i down
@@ -21,6 +23,7 @@ class Joc{
             UP: {code: 38, pressed: false}
         }
     }
+
     set velocitat(velocitatJoc){
         this.velocitatJoc = velocitatJoc;
     }
@@ -60,6 +63,9 @@ class Joc{
          * al canva: Pales, bola, etc
         **********************************/      
         this.draw();
+        this.bola.update();
+        this.palaJoc.update();
+        this.palaJugador.update();
     }
 
     draw(){
@@ -68,7 +74,9 @@ class Joc{
          * Tasca. Dibuixar els elements del joc
          * al canva, un cop actualitzades
          * les seves posicions: Pales, bola, etc
-        **********************************/  
+        **********************************/
+        this.palaJoc.draw(this.myCtx);
+        this.palaJugador.draw(this.myCtx);
         
     }
     //Neteja el canvas
