@@ -13,6 +13,8 @@ class Joc{
         this.palaJugador=new PalaRectangle(new Punt(15,this.alcada/3),7,30);
         this.palaOrdinador = new PalaRectangle(new Punt(this.amplada-15,this.alcada/3),7,30);
         this.bola = new Bola(new Punt(this.amplada/2,this.alcada/2),10,10);
+
+
         //Tecles de control
         //tecles del Joc. Només fem servir up i down
         this.key = {
@@ -65,8 +67,8 @@ class Joc{
          * al canva: Pales, bola, etc
         **********************************/      
         this.draw();
-        this.palaOrdinador.update(this.alcada);
-        this.palaJugador.updateAuto(this.key,this.alcada);
+        this.palaOrdinador.updateAuto(this.alcada);
+        this.palaJugador.update(this.key,this.alcada);
         this.bola.update(this.amplada,this.alcada,this.palaJugador,this.palaOrdinador);
     }
 
