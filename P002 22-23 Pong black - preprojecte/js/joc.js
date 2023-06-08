@@ -10,8 +10,8 @@ class Joc{
          * Tasca. Crear els elements del joc
          * Pales, bola, etc
         **********************************/
-        this.palaJugador=new palarectangle(new Punt(15,this.alcada/3),7,80);
-        this.palaJoc = new palarectangle(new Punt(this.amplada-15,this.alcada/3),7,80);
+        this.palaJugador=new palarectangle(new Punt(15,this.alcada/3),7,30);
+        this.palaJoc = new palarectangle(new Punt(this.amplada-15,this.alcada/3),7,30);
         this.bola = new bola(new Punt(this.amplada/2,this.alcada/2),10,10);
 
         //Tecles de control
@@ -68,7 +68,7 @@ class Joc{
         this.draw();
         this.bola.update();
         this.palaJoc.update();
-        this.palaJugador.update();
+        this.palaJugador.updateAuto();
     }
 
     draw(){
