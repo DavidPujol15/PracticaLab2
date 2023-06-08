@@ -1,9 +1,8 @@
 class PalaRectangle extends Rectangle{
     constructor(puntPosicio, amplada, alcada){
         super(puntPosicio, amplada, alcada);
-        this.velocitatX = 2;
         this.velocitatY = 2;
-        this.cocolorRectangle = "#eee";
+        this.colorRectangle = "#eee";
     }
 
     mou(mouX,mouY){
@@ -16,7 +15,7 @@ class PalaRectangle extends Rectangle{
          * Tasca. Definir el moviment de la pala
          * en funció de la telca premuda
         **********************************/
-            this.puntPosicio.y = Math.min(alcada - this.alcada, 
+            this.puntPosicio.y = Math.min(alcada - this.alcada,
                 this.puntPosicio.y + this.velocitatY)
         }
         if(key.UP.pressed){

@@ -11,9 +11,8 @@ class Joc{
          * Pales, bola, etc
         **********************************/
         this.palaJugador=new palarectangle(new Punt(15,this.alcada/3),7,30);
-        this.palaJoc = new palarectangle(new Punt(this.amplada-15,this.alcada/3),7,30);
+        this.palaOrdinador = new palarectangle(new Punt(this.amplada-15,this.alcada/3),7,30);
         this.bola = new bola(new Punt(this.amplada/2,this.alcada/2),10,10);
-
         //Tecles de control
         //tecles del Joc. Només fem servir up i down
         this.key = {
@@ -51,8 +50,9 @@ class Joc{
          * Tasca. Dibuixar inicialment els elements del joc
          * al canva: Pales, bola, etc
         **********************************/
-          this.update();
 
+        this.palaOrdinador.draw(this.myCtx)
+        this.palaJugador.draw(this.myCtx)
 
         //Màtode de crida recursiva per generar l'animació dels objectes
         requestAnimationFrame(animacio);
@@ -67,7 +67,7 @@ class Joc{
         **********************************/      
         this.draw();
         this.bola.update();
-        this.palaJoc.update();
+        this.palaOrdinador.update();
         this.palaJugador.updateAuto();
     }
 
@@ -78,7 +78,7 @@ class Joc{
          * al canva, un cop actualitzades
          * les seves posicions: Pales, bola, etc
         **********************************/
-        this.palaJoc.draw(this.myCtx);
+        this.palaOrdinador.draw(this.myCtx);
         this.palaJugador.draw(this.myCtx);
         
     }

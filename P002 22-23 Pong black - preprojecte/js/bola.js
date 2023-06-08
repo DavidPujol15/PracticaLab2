@@ -43,7 +43,8 @@ class Bola extends Rectangle {
      * Tasca. Revisar si xoca amb tots els marges del canva 
     **********************************/ 
         xoc = this.revisaXocTop(segmentTrajectoria)||this.revisaXocBot(segmentTrajectoria)
-                    || this.revisaXocLeft(segmentTrajectoria)|| this.revisaXocRight()||this.revisaXocPales();
+                    || this.revisaXocLeft(segmentTrajectoria)|| this.revisaXocRight(segmentTrajectoria)
+                        ||this.revisaXocPales(segmentTrajectoria,palaJugador, palaOrdinador);
         if(xoc){
               /********************************* 
              * Tasca. Revisar si xoca amb alguna pala i 
@@ -59,10 +60,12 @@ class Bola extends Rectangle {
                 * Poder heu de tenir en compte en quina pala s'ha produït el xoc
                 **********************************/ 
                   switch(xocPala.vora){ 
-                    case "vora??": //un case per cada situació
-                        break; 
-                    }
-                }  
+                    case "top":
+                    case "bot":
+                    case "left":
+                    case "right":
+                  }
+            }
         }
         
         if(!xoc){

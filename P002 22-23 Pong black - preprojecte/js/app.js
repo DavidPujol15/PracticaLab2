@@ -12,7 +12,6 @@ $(function(){
      * al canva: Pales, bola, etc
     **********************************/
 
-    joc = new Joc(myCanvas,myCtx);
     let pantalla = new display(myCtx);
     joc.velocitat(1);
     joc.inicialitza();
