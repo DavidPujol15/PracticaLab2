@@ -15,7 +15,6 @@ $(function(){
 
 
     joc = new Joc(myCanvas,myCtx)
-    joc.velocitat(1);
     joc.inicialitza();
     animacio();
 })
