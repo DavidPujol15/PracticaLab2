@@ -10,7 +10,7 @@ class PalaRectangle extends Rectangle{
         this.puntPosicio.y += y;
     }
     update(key,alcada){
-        if(key.DOWN.pressed){
+        if(key && key.DOWN && key.DOWN.pressed){
          /********************************* 
          * Tasca. Definir el moviment de la pala
          * en funció de la telca premuda
@@ -18,7 +18,7 @@ class PalaRectangle extends Rectangle{
             this.puntPosicio.y = Math.min(alcada - this.alcada,
                 this.puntPosicio.y + this.velocitatY)
         }
-        if(key.UP.pressed){
+        if(key && key.UP && key.UP.pressed){
        /********************************* 
          * Tasca. Definir el moviment de la pala
          * en funció de la telca premuda
