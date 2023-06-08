@@ -84,7 +84,7 @@ class Joc{
     }
     //Neteja el canvas
     clearCanvas(){
-        this.myCanvas.clearRect(
+        this.myCtx.clearRect(
             0,0,
             this.amplada, this.alcada
         )
