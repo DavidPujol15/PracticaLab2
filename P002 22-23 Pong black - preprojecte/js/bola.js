@@ -1,8 +1,8 @@
 class Bola extends Rectangle {
     constructor(puntPosicio, amplada, alcada) {
         super(puntPosicio, amplada,alcada);       
-        this.velocitatx = 2;
-        this.velocitaty = 2;
+        this.velocitatx = -2;
+        this.velocitaty = 0;
         this.colorRectangle = "#eee";
        
     };
@@ -42,9 +42,8 @@ class Bola extends Rectangle {
      /********************************* 
      * Tasca. Revisar si xoca amb tots els marges del canva 
     **********************************/ 
-        let xoc = this.revisaXocTop(segmentTrajectoria)||this.revisaXocBot(segmentTrajectoria)
-                    || this.revisaXocLeft(segmentTrajectoria)|| this.revisaXocRight(segmentTrajectoria)
-                    ||this.revisaXocPales(segmentTrajectoria,palaJugador, palaOrdinador);
+        let xoc = this.revisaXocBot(segmentTrajectoria)||this.revisaXocTop(segmentTrajectoria)||
+            this.revisaXocRight(segmentTrajectoria)||this.revisaXocLeft(segmentTrajectoria);
         if(xoc){
               /********************************* 
              * Tasca. Revisar si xoca amb alguna pala i 
@@ -92,9 +91,10 @@ class Bola extends Rectangle {
         //Com a paràmetre accepta un SEGMENT que heu de crear anteriorment
         //Fer un mètode per cada lateral que manca: esquerra, dret i inferior
         //El el cas dels laterals caldrà assignar puntuació i reiniciar un nou joc
-        
+
+
         revisaXocTop(segmentTrajectoria){
-            if(segmentTrajectoria.puntB.y <= 0){
+            if(segmentTrajectoria.puntB.y <0){
                 let exces = (segmentTrajectoria.puntB.y)/this.velocitaty;
                 this.puntPosicio.x = segmentTrajectoria.puntB.x - exces*this.velocitatx;
                 this.puntPosicio.y = 0;
@@ -104,36 +104,37 @@ class Bola extends Rectangle {
         }
 
         revisaXocBot(segmentTrajectoria){
-            if(segmentTrajectoria.puntB.y + this.alcada >= altCanva){
-                let exces = ((segmentTrajectoria.PuntB.y + this.alcada - altCanva)/this.velocitaty);
+            if(segmentTrajectoria.puntB.y + this.alcada > joc.alcada){
+                let exces = ((segmentTrajectoria.PuntB.y + this.alcada - joc.alcada)/this.velocitaty);
                 this.puntPosicio.x = segmentTrajectoria.puntB.x - exces*this.velocitatx;
-                this.puntPosicio.y = altCanva;
-                this.velocitaty*=-1;
+                this.puntPosicio.y = joc.alcada - this.alcada;
+                this.velocitaty = - this.velocitaty;
                 return true;
             }
         }
 
         revisaXocLeft(segmentTrajectoria){
-            if(segmentTrajectoria.puntB.x + this.amplada <= 0){
-                let exces = ((segmentTrajectoria.PuntB.x + this.amplada)/this.velocitatx);
-                this.puntPosicio.x = 0;
-                this.puntPosicio.y = segmentTrajectoria.puntB.y - exces*this.velocitaty;
+            if(segmentTrajectoria.puntB.x  <= 0){
+                this.velocitatx=0;
+                this.velocitaty=0;
+                this.ColocarAlCentre();
                 return true;
             }
         }
         revisaXocRight(segmentTrajectoria){
-            if(segmentTrajectoria.puntB.x + this.amplada >= ampladaCanva){
-                let exces = ((segmentTrajectoria.PuntB.x + this.amplada - ampladaCanva)/this.velocitatx);
-                this.puntPosicio.x = ampladaCanva;
-                this.puntPosicio.y = segmentTrajectoria.puntB.y - exces*this.velocitaty;
+            if(segmentTrajectoria.puntB.x + this.amplada >= joc.amplada){
+                let exces = ((segmentTrajectoria.PuntB.x + this.amplada - joc.amplada)/this.velocitatx);
+                this.velocitatx=0;
+                this.velocitaty=0;
+                this.ColocarAlCentre();
                 return true;
             }
         }
 
 
         ColocarAlCentre(){
-            this.puntPosicio.x=joc.amplada/2
-            this.puntPosicio.y=joc.alcada/2
+            this.puntPosicio.x=150-this.amplada/2;
+            this.puntPosicio.y=75-this.alcada/2;
         }
         
       
