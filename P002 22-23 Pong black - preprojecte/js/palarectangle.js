@@ -9,7 +9,7 @@ class PalaRectangle extends Rectangle{
         this.puntPosicio.x += x;
         this.puntPosicio.y += y;
     }
-    update(key, alcada){
+    update(key,alcada){
         if(key.DOWN.pressed){
          /********************************* 
          * Tasca. Definir el moviment de la pala
@@ -32,10 +32,7 @@ class PalaRectangle extends Rectangle{
          * automàtica en moviment constant 
          * o amb variacions aleatories
         **********************************/
-       
         this.puntPosicio.y = Math.min(alcada-this.alcada, this.puntPosicio.y + this.velocitatY);
-        
-
     }
 
 }

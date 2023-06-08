@@ -10,9 +10,9 @@ class Joc{
          * Tasca. Crear els elements del joc
          * Pales, bola, etc
         **********************************/
-        this.palaJugador=new palarectangle(new Punt(15,this.alcada/3),7,30);
-        this.palaOrdinador = new palarectangle(new Punt(this.amplada-15,this.alcada/3),7,30);
-        this.bola = new bola(new Punt(this.amplada/2,this.alcada/2),10,10);
+        this.palaJugador=new PalaRectangle(new Punt(15,this.alcada/3),7,30);
+        this.palaOrdinador = new PalaRectangle(new Punt(this.amplada-15,this.alcada/3),7,30);
+        this.bola = new Bola(new Punt(this.amplada/2,this.alcada/2),10,10);
         //Tecles de control
         //tecles del Joc. Només fem servir up i down
         this.key = {
@@ -28,7 +28,6 @@ class Joc{
     }
 
     inicialitza(){
-
         $(document).on("keydown",{joc:this}, function(e){
             if(e.keyCode == e.data.joc.key.UP.code){
                 e.data.joc.key.UP.pressed = true;
@@ -53,7 +52,7 @@ class Joc{
 
         this.palaOrdinador.draw(this.myCtx)
         this.palaJugador.draw(this.myCtx)
-
+        this.bola.draw(this.myCtx)
         //Màtode de crida recursiva per generar l'animació dels objectes
         requestAnimationFrame(animacio);
 
@@ -66,9 +65,9 @@ class Joc{
          * al canva: Pales, bola, etc
         **********************************/      
         this.draw();
-        this.bola.update();
-        this.palaOrdinador.update();
-        this.palaJugador.updateAuto();
+        this.palaOrdinador.update(this.alcada);
+        this.palaJugador.updateAuto(this.key,this.alcada);
+        this.bola.update(this.amplada,this.alcada,this.palaJugador,this.palaOrdinador);
     }
 
     draw(){
@@ -80,11 +79,12 @@ class Joc{
         **********************************/
         this.palaOrdinador.draw(this.myCtx);
         this.palaJugador.draw(this.myCtx);
+        this.bola.draw(this.myCtx)
         
     }
     //Neteja el canvas
     clearCanvas(){
-        this.myCtx.clearRect(
+        this.myCanvas.clearRect(
             0,0,
             this.amplada, this.alcada
         )

@@ -3,7 +3,7 @@ class Bola extends Rectangle {
         super(puntPosicio, amplada,alcada);       
         this.velocitatx = 2;
         this.velocitaty = 2;
-        this.colorCercle = "#eee";
+        this.colorRectangle = "#eee";
        
     };
     mou(mouX,mouY){
@@ -31,7 +31,7 @@ class Bola extends Rectangle {
      * a dreta, esquerra, a dalt o a baix de la pala
      * canviar el sentit en funció d'on ha xocat i sortir
     **********************************/  
-        let xoc = false; 
+
 
         let puntActual=this.puntPosicio;
         let puntSeguent = new Punt(this.puntPosicio.x + this.velocitatx,
@@ -42,9 +42,9 @@ class Bola extends Rectangle {
      /********************************* 
      * Tasca. Revisar si xoca amb tots els marges del canva 
     **********************************/ 
-        xoc = this.revisaXocTop(segmentTrajectoria)||this.revisaXocBot(segmentTrajectoria)
+        let xoc = this.revisaXocTop(segmentTrajectoria)||this.revisaXocBot(segmentTrajectoria)
                     || this.revisaXocLeft(segmentTrajectoria)|| this.revisaXocRight(segmentTrajectoria)
-                        ||this.revisaXocPales(segmentTrajectoria,palaJugador, palaOrdinador);
+                    ||this.revisaXocPales(segmentTrajectoria,palaJugador, palaOrdinador);
         if(xoc){
               /********************************* 
              * Tasca. Revisar si xoca amb alguna pala i 
@@ -58,13 +58,25 @@ class Bola extends Rectangle {
                  * canviar el sentit en funció de si ha xocar
                 * a dreta, esquerra, a dalt o a baix de la pala 
                 * Poder heu de tenir en compte en quina pala s'ha produït el xoc
-                **********************************/ 
-                  switch(xocPala.vora){ 
-                    case "top":
-                    case "bot":
-                    case "left":
-                    case "right":
-                  }
+                **********************************/
+                 this.puntPosicio.x=xocPala.pI.x;
+                 this.puntPosicio.y=xocPala.pI.y;
+                 switch(xocPala.vora) {
+                     case "superior":
+                         this.velocitaty *= -1;
+                         break;
+                     case "inferior":
+                         this.velocitaty *= -1;
+                         break;
+                     case "esquerra":
+                         this.velocitatx * -1;
+                         this.velocitaty *= -1;
+                         break;
+                     case "dreta":
+                         this.velocitatx * -1;
+                         this.velocitaty *= -1;
+                         break;
+                 }
             }
         }
         
@@ -117,7 +129,12 @@ class Bola extends Rectangle {
                 return true;
             }
         }
-       
+
+
+        ColocarAlCentre(){
+            this.puntPosicio.x=joc.amplada/2
+            this.puntPosicio.y=joc.alcada/2
+        }
         
       
      /********************************* 
@@ -134,9 +151,11 @@ class Bola extends Rectangle {
     **********************************/ 
 
     revisaXocPales(segmentTrajectoria,palaJugador, palaOrdinador){
-        let PuntVora 
-
-        return PuntVora;
+        let PuntVora=segmentTrajectoria.interseccioSegmentRectangle(palaJugador)
+        if(PuntVora){
+            return PuntVora;
+        }
+        return segmentTrajectoria.interseccioSegmentRectangle(palaOrdinador);
     }
 
    

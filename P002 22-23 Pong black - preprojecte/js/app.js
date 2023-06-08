@@ -1,6 +1,7 @@
 //Variables i constants globals
 //Main de l'aplicatiu
 var joc;
+let pantalla;
 $(function(){
 
     let myCanvas = $("#joc")[0];
@@ -12,7 +13,8 @@ $(function(){
      * al canva: Pales, bola, etc
     **********************************/
 
-    let pantalla = new display(myCtx);
+
+    joc = new Joc(myCanvas,myCtx)
     joc.velocitat(1);
     joc.inicialitza();
     animacio();
