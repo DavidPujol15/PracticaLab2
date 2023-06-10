@@ -26,7 +26,7 @@ class PalaRectangle extends Rectangle{
             this.puntPosicio.y = Math.max(0,this.puntPosicio.y - this.velocitatY)
         }
     }
-    updateAuto(alcada,velocitatJoc){
+    updateAuto(alcada){
         /*********************************
          * Tasca. Definir el moviment de la pala
          * automàtica en moviment constant

@@ -1,8 +1,8 @@
 class Bola extends Rectangle {
     constructor(puntPosicio, amplada, alcada) {
         super(puntPosicio, amplada,alcada);       
-        this.velocitatx = -1;
-        this.velocitaty = -1;
+        this.velocitatx = 1;
+        this.velocitaty = 0;
         this.colorRectangle = "#eee";
        
     };
@@ -153,9 +153,10 @@ class Bola extends Rectangle {
     revisaXocPales(segmentTrajectoria,palaJugador, palaOrdinador){
         let PuntVora= segmentTrajectoria.interseccioSegmentRectangle(palaJugador)
         if(PuntVora){
-            return PuntVora;
+            return {pI:PuntVora.pI,vora:PuntVora.vora,pala:palaJugador};
         }
-        return segmentTrajectoria.interseccioSegmentRectangle(palaOrdinador);
+        PuntVora=segmentTrajectoria.interseccioSegmentRectangle(palaOrdinador);
+        return {pI:PuntVora.pI,vora:PuntVora.vora,pala:palaOrdinador};
     }
 
    
