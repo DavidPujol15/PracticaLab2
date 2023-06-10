@@ -4,6 +4,7 @@ class Joc{
         this.myCtx = myCtx;
         this.amplada = myCanvas.width;
         this.alcada = myCanvas.height;
+        this.velocitatJoc=1;
 
         //Elements del joc
         /********************************* 
@@ -57,7 +58,6 @@ class Joc{
         this.bola.draw(this.myCtx)
         //Màtode de crida recursiva per generar l'animació dels objectes
         requestAnimationFrame(animacio);
-
     }
 
     update(){
@@ -67,7 +67,7 @@ class Joc{
          * al canva: Pales, bola, etc
         **********************************/      
         this.draw();
-        this.palaOrdinador.updateAuto(this.alcada);
+        this.palaOrdinador.updateAuto(this.alcada,this.velocitatJoc);
         this.palaJugador.update(this.key,this.alcada);
         this.bola.update(this.amplada,this.alcada,this.palaJugador,this.palaOrdinador);
     }

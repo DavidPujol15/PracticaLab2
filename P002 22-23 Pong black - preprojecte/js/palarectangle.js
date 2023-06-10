@@ -15,7 +15,7 @@ class PalaRectangle extends Rectangle{
          * Tasca. Definir el moviment de la pala
          * en funció de la telca premuda
         **********************************/
-            this.puntPosicio.y = Math.min(alcada - this.alcada,
+            this.puntPosicio.y = Math.min(alcada-this.alcada,
                 this.puntPosicio.y + this.velocitatY)
         }
         if(key && key.UP && key.UP.pressed){
@@ -26,13 +26,13 @@ class PalaRectangle extends Rectangle{
             this.puntPosicio.y = Math.max(0,this.puntPosicio.y - this.velocitatY)
         }
     }
-    updateAuto(alcada){
-        /********************************* 
+    updateAuto(alcada,velocitatJoc){
+        /*********************************
          * Tasca. Definir el moviment de la pala
-         * automàtica en moviment constant 
+         * automàtica en moviment constant
          * o amb variacions aleatories
         **********************************/
-        this.puntPosicio.y = Math.min(alcada-this.alcada, this.puntPosicio.y + this.velocitatY);
+
     }
 
 }
