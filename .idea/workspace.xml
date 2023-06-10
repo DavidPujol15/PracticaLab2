@@ -17,6 +17,9 @@
     <setting file="file://$PROJECT_DIR$/P002 22-23 Pong black - preprojecte/js/punt.js" root0="SKIP_INSPECTION" />
     <setting file="file://$PROJECT_DIR$/P002 22-23 Pong black - preprojecte/js/rectangle.js" root0="SKIP_INSPECTION" />
   </component>
+  <component name="ProjectCodeStyleSettingsMigration">
+    <option name="version" value="2" />
+  </component>
   <component name="ProjectId" id="2QsuCIpfpbPGRppul1DQ7mLQZUD" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -64,6 +67,7 @@
       <workItem from="1686224402431" duration="2175000" />
       <workItem from="1686243186627" duration="94000" />
       <workItem from="1686259285897" duration="15000" />
+      <workItem from="1686309649721" duration="11000" />
     </task>
     <servers />
   </component>

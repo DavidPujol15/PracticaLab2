@@ -1,8 +1,8 @@
 class Bola extends Rectangle {
     constructor(puntPosicio, amplada, alcada) {
         super(puntPosicio, amplada,alcada);       
-        this.velocitatx = -2;
-        this.velocitaty = 0;
+        this.velocitatx = -1;
+        this.velocitaty = -1;
         this.colorRectangle = "#eee";
        
     };
@@ -43,7 +43,8 @@ class Bola extends Rectangle {
      * Tasca. Revisar si xoca amb tots els marges del canva 
     **********************************/ 
         let xoc = this.revisaXocBot(segmentTrajectoria)||this.revisaXocTop(segmentTrajectoria)||
-            this.revisaXocRight(segmentTrajectoria)||this.revisaXocLeft(segmentTrajectoria);
+            this.revisaXocRight(segmentTrajectoria)||this.revisaXocLeft(segmentTrajectoria)||
+            this.revisaXocPales(segmentTrajectoria,palaJugador, palaOrdinador);
         if(xoc){
               /********************************* 
              * Tasca. Revisar si xoca amb alguna pala i 
@@ -68,12 +69,10 @@ class Bola extends Rectangle {
                          this.velocitaty *= -1;
                          break;
                      case "esquerra":
-                         this.velocitatx * -1;
-                         this.velocitaty *= -1;
+                         this.velocitatx *= -1;
                          break;
                      case "dreta":
-                         this.velocitatx * -1;
-                         this.velocitaty *= -1;
+                         this.velocitatx *= -1;
                          break;
                  }
             }
@@ -105,7 +104,7 @@ class Bola extends Rectangle {
 
         revisaXocBot(segmentTrajectoria){
             if(segmentTrajectoria.puntB.y + this.alcada > joc.alcada){
-                let exces = ((segmentTrajectoria.PuntB.y + this.alcada - joc.alcada)/this.velocitaty);
+                let exces = ((segmentTrajectoria.puntB.y + this.alcada - joc.alcada)/this.velocitaty);
                 this.puntPosicio.x = segmentTrajectoria.puntB.x - exces*this.velocitatx;
                 this.puntPosicio.y = joc.alcada - this.alcada;
                 this.velocitaty = - this.velocitaty;
@@ -123,7 +122,7 @@ class Bola extends Rectangle {
         }
         revisaXocRight(segmentTrajectoria){
             if(segmentTrajectoria.puntB.x + this.amplada >= joc.amplada){
-                let exces = ((segmentTrajectoria.PuntB.x + this.amplada - joc.amplada)/this.velocitatx);
+                let exces = ((segmentTrajectoria.puntB.x + this.amplada - joc.amplada)/this.velocitatx);
                 this.velocitatx=0;
                 this.velocitaty=0;
                 this.ColocarAlCentre();
@@ -152,7 +151,7 @@ class Bola extends Rectangle {
     **********************************/ 
 
     revisaXocPales(segmentTrajectoria,palaJugador, palaOrdinador){
-        let PuntVora=segmentTrajectoria.interseccioSegmentRectangle(palaJugador)
+        let PuntVora= segmentTrajectoria.interseccioSegmentRectangle(palaJugador)
         if(PuntVora){
             return PuntVora;
         }
