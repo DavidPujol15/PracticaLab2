@@ -52,10 +52,7 @@ class Joc{
          * Tasca. Dibuixar inicialment els elements del joc
          * al canva: Pales, bola, etc
         **********************************/
-
-        this.palaOrdinador.draw(this.myCtx)
-        this.palaJugador.draw(this.myCtx)
-        this.bola.draw(this.myCtx)
+        this.draw();
         //Màtode de crida recursiva per generar l'animació dels objectes
         requestAnimationFrame(animacio);
     }
