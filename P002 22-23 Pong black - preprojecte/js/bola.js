@@ -57,7 +57,7 @@ class Bola extends Rectangle {
                 **********************************/
                  this.puntPosicio.x=xocPala.pI.x;
                  this.puntPosicio.y=xocPala.pI.y;
-                 switch(xocPala.vora) {
+                 switch(xocPala.costat) {
                      case "superior":
                          this.velocitaty *= -1;
                          break;
@@ -167,6 +167,7 @@ class Bola extends Rectangle {
                  costat: costatPala,
                  pala: palaId
              };
+             
              return puntVora;
          }
          return null;
