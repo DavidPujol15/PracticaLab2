@@ -64,12 +64,12 @@ class Bola extends Rectangle {
                      case "inferior":
                          this.velocitaty *= -1;
                          break;
-                     case "esquerra":
-                         this.velocitatx *= -1;
-                         break;
                      case "dreta":
                          this.velocitatx *= -1;
                          break;
+                    case "esquerra":
+                        this.velocitatx *= -1;
+                        break;
                  }
             }
         }

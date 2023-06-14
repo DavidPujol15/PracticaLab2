@@ -12,8 +12,6 @@ $(function(){
      * dels elements del joc
      * al canva: Pales, bola, etc
     **********************************/
-
-
     joc = new Joc(myCanvas,myCtx)
     joc.inicialitza();
     animacio();
@@ -24,7 +22,9 @@ function animacio(){
     //Oportunitat per actualitzar les puntuacions
     //revisar si seguim jugant o no
     //Si pujem de nivell, etc
-
     //Crida recursiva per generar animació
     requestAnimationFrame(animacio);
+    let scoreJugador = $("score-jugador1")
+    let scoreOrdinador = $("score-jugador2")
+
 }
