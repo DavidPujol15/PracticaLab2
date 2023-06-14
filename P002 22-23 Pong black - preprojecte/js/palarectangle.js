@@ -34,14 +34,13 @@ class PalaRectangle extends Rectangle{
         **********************************/
         const direction = Math.floor(Math.random() * 2); // randomly choose 0 or 1
         const speed = 5; // set a fixed speed for the paddle to move
-
-        setInterval(1,function () {
-            if (direction == 0) { // move up
-                this.puntPosicio.y = Math.max(0, this.puntPosicio.y - speed);
-            } else { // move down
-                this.puntPosicio.y = Math.min(alcada - this.alcada, this.puntPosicio.y + speed);
-            }
-        })
-
+        if (direction == 0) { // move up
+            this.puntPosicio.y = Math.max(0, this.puntPosicio.y - speed);
+        } else { // move down
+               this.puntPosicio.y = Math.min(alcada - this.alcada, this.puntPosicio.y + speed);
+       }
+    }
+    ColocarAlMig(){
+        this.puntPosicio.y=joc.alcada/3
     }
 }

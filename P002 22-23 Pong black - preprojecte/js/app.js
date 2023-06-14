@@ -24,7 +24,5 @@ function animacio(){
     //Si pujem de nivell, etc
     //Crida recursiva per generar animació
     requestAnimationFrame(animacio);
-    let scoreJugador = $("score-jugador1")
-    let scoreOrdinador = $("score-jugador2")
 
 }

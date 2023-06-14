@@ -113,6 +113,7 @@ class Bola extends Rectangle {
                 this.velocitatx=0;
                 this.velocitaty=0;
                 this.ColocarAlCentre();
+                joc.ResetPales();
                 return true;
             }
         }
@@ -122,11 +123,10 @@ class Bola extends Rectangle {
                 this.velocitatx=0;
                 this.velocitaty=0;
                 this.ColocarAlCentre();
+                joc.ResetPales();
                 return true;
             }
         }
-
-
         ColocarAlCentre(){
             this.puntPosicio.x=150-this.amplada/2;
             this.puntPosicio.y=75-this.alcada/2;

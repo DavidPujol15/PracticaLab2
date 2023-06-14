@@ -12,17 +12,19 @@ class Joc{
          * Pales, bola, etc
         **********************************/
         this.palaJugador=new PalaRectangle(new Punt(15,this.alcada/3),7,30);
-        this.palaOrdinador = new PalaRectangle(new Punt(this.amplada-15,this.alcada/3),7,50);
+        this.palaOrdinador = new PalaRectangle(new Punt(this.amplada-15,this.alcada/3),7,30);
         this.bola = new Bola(new Punt(this.amplada/2,this.alcada/2),10,10);
-
-
+        var scoreJugador
+        var scoreOrdinador
+        
         //Tecles de control
         //tecles del Joc. Només fem servir up i down
         this.key = {
             RIGHT: {code: 39, pressed: false},
             LEFT: {code: 37, pressed: false},
             DOWN: {code: 40, pressed: false},
-            UP: {code: 38, pressed: false}
+            UP: {code: 38, pressed: false},
+            SPACE: {code:32, pressed:false}
         }
     }
 
@@ -88,6 +90,12 @@ class Joc{
             this.amplada, this.alcada
         )
     }
+    ResetPales(){
+        this.palaJugador.ColocarAlMig();
+        this.palaOrdinador.ColocarAlMig();
+        this.velocitatJoc=0;
+    }
+
 
 
 }
