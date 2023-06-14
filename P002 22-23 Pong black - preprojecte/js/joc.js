@@ -12,7 +12,7 @@ class Joc{
          * Pales, bola, etc
         **********************************/
         this.palaJugador=new PalaRectangle(new Punt(15,this.alcada/3),7,30);
-        this.palaOrdinador = new PalaRectangle(new Punt(this.amplada-15,this.alcada/3),7,30);
+        this.palaOrdinador = new PalaRectangle(new Punt(this.amplada-15,this.alcada/3),7,50);
         this.bola = new Bola(new Punt(this.amplada/2,this.alcada/2),10,10);
 
 

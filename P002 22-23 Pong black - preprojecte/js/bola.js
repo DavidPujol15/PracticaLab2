@@ -166,8 +166,11 @@ class Bola extends Rectangle {
                  pI: interseccio.pI,
                  costat: costatPala,
                  pala: palaId
+
              };
-             
+             console.log(costatPala)
+             console.log(palaId)
+             console.log("x: "+ this.velocitatx +", y: "+this.velocitaty)
              return puntVora;
          }
          return null;
