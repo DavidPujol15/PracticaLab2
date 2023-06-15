@@ -12,10 +12,8 @@ class Joc{
          * Pales, bola, etc
         **********************************/
         this.palaJugador=new PalaRectangle(new Punt(15,this.alcada/3),7,30);
-        this.palaOrdinador = new PalaRectangle(new Punt(this.amplada-15,this.alcada/3),7,30);
+        this.palaOrdinador = new PalaRectangle(new Punt(this.amplada-15,this.alcada/3),7,300);
         this.bola = new Bola(new Punt(this.amplada/2,this.alcada/2),10,10);
-        var scoreJugador
-        var scoreOrdinador
         
         //Tecles de control
         //tecles del Joc. Només fem servir up i down
@@ -26,6 +24,10 @@ class Joc{
             UP: {code: 38, pressed: false},
             SPACE: {code:32, pressed:false}
         }
+
+        this.scoreJugador= 0;
+        this.scoreOrdinador= 0;
+        this.over;
     }
 
     set velocitat(velocitatJoc){
@@ -39,6 +41,8 @@ class Joc{
             }
             else if(e.keyCode == e.data.joc.key.DOWN.code){
                 e.data.joc.key.DOWN.pressed = true;
+            }else if (e.keyCode == e.data.joc.key.SPACE.code) {
+                e.data.joc.key.SPACE.pressed = false;
             }
         });
         $(document).on("keyup", {joc:this}, function(e){
@@ -47,9 +51,10 @@ class Joc{
             }
             else if(e.keyCode == e.data.joc.key.DOWN.code){
                 e.data.joc.key.DOWN.pressed = false;
+            } else if (e.keyCode == e.data.joc.key.SPACE.code) {
+                e.data.joc.key.SPACE.pressed = false;
             }
         });
-
           /********************************* 
          * Tasca. Dibuixar inicialment els elements del joc
          * al canva: Pales, bola, etc
@@ -57,6 +62,7 @@ class Joc{
         this.draw();
         //Màtode de crida recursiva per generar l'animació dels objectes
         requestAnimationFrame(animacio);
+        this.velocitat(0);
     }
 
     update(){
@@ -90,10 +96,17 @@ class Joc{
             this.amplada, this.alcada
         )
     }
+
+    Over(){
+        return this.scoreOrdinador==5||this.scoreJugador==5;
+    }
     ResetPales(){
         this.palaJugador.ColocarAlMig();
         this.palaOrdinador.ColocarAlMig();
-        this.velocitatJoc=0;
+
+        if(this.Over()){
+
+        }
     }
 
 

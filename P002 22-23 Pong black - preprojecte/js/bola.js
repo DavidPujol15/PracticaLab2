@@ -3,7 +3,7 @@ class Bola extends Rectangle {
         super(puntPosicio, amplada,alcada);       
         this.velocitatx = -1;
         this.velocitaty = 1;
-        this.colorRectangle = "#eee";
+        this.colorRectangle = "rgba(196,18,223,0.6)";
        
     };
     mou(mouX,mouY){
@@ -60,11 +60,11 @@ class Bola extends Rectangle {
                  switch(xocPala.costat) {
                      case "superior":
                      case "inferior":
-                         this.velocitaty *= -1;
+                         this.velocitaty = -this.velocitaty;
                          break;
                      case "dreta":
                      case "esquerra":
-                        this.velocitatx *= -1;
+                        this.velocitatx = -this.velocitatx;
                         break;
                  }
             }
@@ -103,26 +103,35 @@ class Bola extends Rectangle {
 
         revisaXocLeft(segmentTrajectoria){
             if(segmentTrajectoria.puntB.x  <= 0){
-                this.velocitatx=0;
-                this.velocitaty=0;
                 this.ColocarAlCentre();
                 joc.ResetPales();
+                joc.scoreOrdinador++;
                 return true;
             }
         }
         revisaXocRight(segmentTrajectoria){
             if(segmentTrajectoria.puntB.x + this.amplada > joc.amplada){
-                let exces = ((segmentTrajectoria.puntB.x + this.amplada - joc.amplada)/this.velocitatx);
-                this.velocitatx=0;
-                this.velocitaty=0;
                 this.ColocarAlCentre();
                 joc.ResetPales();
+                joc.scoreJugador++;
                 return true;
             }
         }
         ColocarAlCentre(){
             this.puntPosicio.x=150-this.amplada/2;
             this.puntPosicio.y=75-this.alcada/2;
+            this.velocitatx=0;
+            this.velocitaty=0;
+            if(!joc.Over()){
+                if(joc.key && joc.key.SPACE && joc.key.SPACE.pressed){
+                    /*********************************
+                     * Tasca. Definir el moviment de la pala
+                     * en funció de la telca premuda
+                     **********************************/
+                    this.velocitatx=1.5;
+                    this.velocitaty=1.5;
+                }
+            }
         }
         
       

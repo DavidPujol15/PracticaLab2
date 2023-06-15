@@ -4,5 +4,6 @@ class Display{
         this.amplada=10
         this.alcada=3;
     }
-   
+
+
 }
