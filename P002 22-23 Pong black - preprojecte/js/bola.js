@@ -7,8 +7,8 @@ class Bola extends Rectangle {
        
     };
     mou(mouX,mouY){
-        this.puntPosicio.x += x;
-        this.puntPosicio.y += y;
+        this.puntPosicio.x += mouX;
+        this.puntPosicio.y += mouY;
     }
 
     update(ampleCanva, altCanva, palaJugador, palaOrdinador){
@@ -59,15 +59,11 @@ class Bola extends Rectangle {
                  this.puntPosicio.y=xocPala.pI.y;
                  switch(xocPala.costat) {
                      case "superior":
-                         this.velocitaty *= -1;
-                         break;
                      case "inferior":
                          this.velocitaty *= -1;
                          break;
                      case "dreta":
-                         this.velocitatx *= -1;
-                         break;
-                    case "esquerra":
+                     case "esquerra":
                         this.velocitatx *= -1;
                         break;
                  }
@@ -80,13 +76,10 @@ class Bola extends Rectangle {
             this.puntPosicio.y = segmentTrajectoria.puntB.y;
          }
     }
-
-
         //Exemple de com identificar un xoc al marge superior
         //Com a paràmetre accepta un SEGMENT que heu de crear anteriorment
         //Fer un mètode per cada lateral que manca: esquerra, dret i inferior
         //El el cas dels laterals caldrà assignar puntuació i reiniciar un nou joc
-
 
         revisaXocTop(segmentTrajectoria){
             if(segmentTrajectoria.puntB.y <0){
@@ -118,7 +111,7 @@ class Bola extends Rectangle {
             }
         }
         revisaXocRight(segmentTrajectoria){
-            if(segmentTrajectoria.puntB.x + this.amplada >= joc.amplada){
+            if(segmentTrajectoria.puntB.x + this.amplada > joc.amplada){
                 let exces = ((segmentTrajectoria.puntB.x + this.amplada - joc.amplada)/this.velocitatx);
                 this.velocitatx=0;
                 this.velocitaty=0;
