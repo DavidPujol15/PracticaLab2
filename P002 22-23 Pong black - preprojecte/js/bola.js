@@ -120,18 +120,8 @@ class Bola extends Rectangle {
         ColocarAlCentre(){
             this.puntPosicio.x=150-this.amplada/2;
             this.puntPosicio.y=75-this.alcada/2;
-            this.velocitatx=0;
-            this.velocitaty=0;
-            if(!joc.Over()){
-                if(joc.key && joc.key.SPACE && joc.key.SPACE.pressed){
-                    /*********************************
-                     * Tasca. Definir el moviment de la pala
-                     * en funció de la telca premuda
-                     **********************************/
-                    this.velocitatx=1.5;
-                    this.velocitaty=1.5;
-                }
-            }
+            this.velocitaty=Math.random() < 0.5 ? -1 : 1;
+            this.velocitatx=Math.random() < 0.5 ? -1 : 1;
         }
         
       

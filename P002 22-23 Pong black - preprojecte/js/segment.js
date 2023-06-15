@@ -116,8 +116,6 @@ class Segment{
     }
 
 
-
-
      //retorna un punt d'intersecció entre dos segments. Null si no existeix
      puntInterseccio(segment){
         if (this.esTallen(segment)){

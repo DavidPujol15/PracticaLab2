@@ -12,8 +12,8 @@ class Joc{
          * Pales, bola, etc
         **********************************/
         this.palaJugador=new PalaRectangle(new Punt(15,this.alcada/3),7,30);
-        this.palaOrdinador = new PalaRectangle(new Punt(this.amplada-15,this.alcada/3),7,300);
-        this.bola = new Bola(new Punt(this.amplada/2,this.alcada/2),10,10);
+        this.palaOrdinador = new PalaRectangle(new Punt(this.amplada-15,this.alcada/3),7,30);
+        this.bola = new Bola(new Punt(this.amplada/2,this.alcada/2),7,7);
         
         //Tecles de control
         //tecles del Joc. Només fem servir up i down
@@ -27,7 +27,6 @@ class Joc{
 
         this.scoreJugador= 0;
         this.scoreOrdinador= 0;
-        this.over;
     }
 
     set velocitat(velocitatJoc){
@@ -41,18 +40,14 @@ class Joc{
             }
             else if(e.keyCode == e.data.joc.key.DOWN.code){
                 e.data.joc.key.DOWN.pressed = true;
-            }else if (e.keyCode == e.data.joc.key.SPACE.code) {
-                e.data.joc.key.SPACE.pressed = false;
             }
-        });
+                });
         $(document).on("keyup", {joc:this}, function(e){
             if(e.keyCode == e.data.joc.key.UP.code){
                 e.data.joc.key.UP.pressed = false;
             }
             else if(e.keyCode == e.data.joc.key.DOWN.code){
                 e.data.joc.key.DOWN.pressed = false;
-            } else if (e.keyCode == e.data.joc.key.SPACE.code) {
-                e.data.joc.key.SPACE.pressed = false;
             }
         });
           /********************************* 
@@ -62,7 +57,6 @@ class Joc{
         this.draw();
         //Màtode de crida recursiva per generar l'animació dels objectes
         requestAnimationFrame(animacio);
-        this.velocitat(0);
     }
 
     update(){
@@ -75,6 +69,7 @@ class Joc{
         this.palaOrdinador.updateAuto(this.alcada,this.velocitatJoc);
         this.palaJugador.update(this.key,this.alcada);
         this.bola.update(this.amplada,this.alcada,this.palaJugador,this.palaOrdinador);
+        this.updatePuntuacio();
     }
 
     draw(){
@@ -96,17 +91,14 @@ class Joc{
             this.amplada, this.alcada
         )
     }
-
-    Over(){
-        return this.scoreOrdinador==5||this.scoreJugador==5;
-    }
     ResetPales(){
         this.palaJugador.ColocarAlMig();
         this.palaOrdinador.ColocarAlMig();
+    }
+    updatePuntuacio(){
+        document.getElementById("score-jugador1").innerText=this.scoreJugador;
+        document.getElementById("score-jugador2").innerText=this.scoreOrdinador;
 
-        if(this.Over()){
-
-        }
     }
 
 

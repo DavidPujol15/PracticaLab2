@@ -26,3 +26,18 @@ function animacio(){
     requestAnimationFrame(animacio);
 
 }
+function pantalles() {
+    var MenuContainer = document.getElementById('MenuContainer');
+    var GameContainer = document.getElementById('container');
+
+    if (MenuContainer.style.display === 'block') {
+        GameContainer.style.display = 'block';
+        MenuContainer.style.display = 'none';
+    } else {
+        MenuContainer.style.display = 'block';
+        GameContainer.style.display = 'block';
+    }
+
+}
+var boto = document.getElementById('boto');
+boto.addEventListener('click', pantalles);
